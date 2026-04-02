@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { disabled } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-tic-tac-2',
@@ -11,8 +12,11 @@ export class TicTac2Component {
   board: string[] = Array(9).fill('');
   winText: string = '';
   currentPlayer: 'X' | 'O' = 'X';
+  gameOver: boolean = false;
 
   handleClick(index: number) {
+    if (this.gameOver || this.board[index]) return;
+
     console.log(this.board);
     if (!this.board[index]) {
       this.board[index] = this.currentPlayer;
@@ -51,7 +55,8 @@ export class TicTac2Component {
     ) {
       console.log('x :)')
       this.board.forEach((_,square) => {
-        this.board[square] = '';
+        // this.board[square] = '';
+        this.gameOver = true;
       })
       this.winText = 'X has won'
     }
@@ -66,7 +71,8 @@ export class TicTac2Component {
       (this.board[1] === 'O' && this.board[4] === 'O' && this.board[7] === 'O')
     ) {
        this.board.forEach((_,square) => {
-        this.board[square] = '';
+        // this.board[square] = '';
+        this.gameOver = true;
       })
       console.log('o :)');
       this.winText = 'O has won'
@@ -77,6 +83,7 @@ export class TicTac2Component {
      this.board.forEach((_,square) => {
         this.board[square] = ''
         this.winText = '';
+        this.gameOver = false;
       });
   }
 }
