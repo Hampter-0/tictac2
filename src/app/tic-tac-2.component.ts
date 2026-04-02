@@ -35,13 +35,8 @@ export class TicTac2Component {
       (this.board[8] === 'X' || this.board[8] === 'O')
     )
     {
-      this.board.forEach((_,square) => {
-        this.board[square] = ''
         this.winText = 'tie :(';
-      });
-    } else {
-
-    }
+    };
 
 
     if (
@@ -76,5 +71,12 @@ export class TicTac2Component {
       console.log('o :)');
       this.winText = 'O has won'
     }
+  }
+
+  resetBoard(){
+     this.board.forEach((_,square) => {
+        this.board[square] = ''
+        this.winText = '';
+      });
   }
 }
