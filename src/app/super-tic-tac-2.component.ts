@@ -11,22 +11,25 @@ import { Router } from '@angular/router';
 
 export class SuperTicTac2Component {
 
-constructor(private router:Router) {
-    
-}
+    constructor(private router: Router) {
 
+    }
     winText: string = '';
     boards: string[][] = Array(9).fill(null).map(() => Array(9).fill(''));
     currentPlayer: 'X' | 'O' = 'X';
     gameOver: boolean = false;
+    currentField: string = '0'
+    wonFields: boolean[] = Array(9).fill(false);
 
-    goToTictac2(){
+    goToTictac2() {
         this.router.navigate(['/tictac2'])
     }
 
     handleClick(boardIndex: number, cellIndex: number) {
-        if (this.boards[boardIndex][cellIndex]) return;
-        console.log(this.boards);
+        if (this.wonFields[boardIndex]) return;
+        if (this.boards[boardIndex][cellIndex] !== '') return;
+        this.boards[boardIndex][cellIndex] = this.currentPlayer;
+        // console.log(this.boards);
 
         this.boards[boardIndex][cellIndex] = this.currentPlayer;
         if (this.currentPlayer === 'X') {
@@ -35,93 +38,38 @@ constructor(private router:Router) {
             this.currentPlayer = 'X';
         }
 
-        //
-        if (
-            (this.boards[0][0] === 'X' && this.boards[0][1] === 'X' && this.boards[0][2] === 'X') ||
-            (this.boards[0][0] === 'X' && this.boards[0][3] === 'X' && this.boards[0][6] === 'X') ||
-            (this.boards[0][0] === 'X' && this.boards[0][4] === 'X' && this.boards[0][8] === 'X') ||
-            (this.boards[0][6] === 'X' && this.boards[0][4] === 'X' && this.boards[0][2] === 'X') ||
-            (this.boards[0][2] === 'X' && this.boards[0][5] === 'X' && this.boards[0][8] === 'X') ||
-            (this.boards[0][6] === 'X' && this.boards[0][7] === 'X' && this.boards[0][8] === 'X') ||
-            (this.boards[0][3] === 'X' && this.boards[0][4] === 'X' && this.boards[0][5] === 'X') ||
-            (this.boards[0][1] === 'X' && this.boards[0][4] === 'X' && this.boards[0][7] === 'X')
-        ) {
-            console.log('x :)')
-            this.boards.forEach((_,square) => {
-                // this.board[square] = '';
-                this.boards[0][square] = "X";
-                console.log("veld 1 x won")
-            })
-            // this.gameOver = true;
-            
-            this.winText = 'X has won veld 1'
-        }
+        const possibleWins = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ]
 
-        if (
-            (this.boards[0][0] === 'O' && this.boards[0][1] === 'O' && this.boards[0][2] === 'O') ||
-            (this.boards[0][0] === 'O' && this.boards[0][3] === 'O' && this.boards[0][6] === 'O') ||
-            (this.boards[0][0] === 'O' && this.boards[0][4] === 'O' && this.boards[0][8] === 'O') ||
-            (this.boards[0][6] === 'O' && this.boards[0][4] === 'O' && this.boards[0][2] === 'O') ||
-            (this.boards[0][2] === 'O' && this.boards[0][5] === 'O' && this.boards[0][8] === 'O') ||
-            (this.boards[0][6] === 'O' && this.boards[0][7] === 'O' && this.boards[0][8] === 'O') ||
-            (this.boards[0][3] === 'O' && this.boards[0][4] === 'O' && this.boards[0][5] === 'O') ||
-            (this.boards[0][1] === 'O' && this.boards[0][4] === 'O' && this.boards[0][7] === 'O')
-        ) {
-            this.boards.forEach((_, square) => {
-                // this.board[square] = '';
-                this.boards[0][square] = "O";
-            })
-            // this.gameOver = true;
-            console.log('o has won veld 1');
-            this.winText = 'O has won veld 1'
-        }
+        for (let i = 0; i < 9; i++) {
+            if (this.wonFields[i]) continue;
+            for (const [a, b, c] of possibleWins) {
+                if (this.boards[i][a] && this.boards[i][a] === this.boards[i][b] && this.boards[i][a] === this.boards[i][c]) {
+                    let winner = this.boards[i][a];
+                    this.currentField = i.toString();
+                    this.wonFields[i] = true;
 
-        if (
-            (this.boards[1][0] === 'X' && this.boards[1][1] === 'X' && this.boards[1][2] === 'X') ||
-            (this.boards[1][0] === 'X' && this.boards[1][3] === 'X' && this.boards[1][6] === 'X') ||
-            (this.boards[1][0] === 'X' && this.boards[1][4] === 'X' && this.boards[1][8] === 'X') ||
-            (this.boards[1][6] === 'X' && this.boards[1][4] === 'X' && this.boards[1][2] === 'X') ||
-            (this.boards[1][2] === 'X' && this.boards[1][5] === 'X' && this.boards[1][8] === 'X') ||
-            (this.boards[1][6] === 'X' && this.boards[1][7] === 'X' && this.boards[1][8] === 'X') ||
-            (this.boards[1][3] === 'X' && this.boards[1][4] === 'X' && this.boards[1][5] === 'X') ||
-            (this.boards[1][1] === 'X' && this.boards[1][4] === 'X' && this.boards[1][7] === 'X')
-        ) {
-            console.log('x :)')
-            this.boards.forEach((_, square) => {
-                // this.board[square] = '';
-                this.boards[1][square] = "X";
-                console.log("veld 2 x won")
-            })
-            // this.gameOver = true;
-            this.winText = 'X has won veld 2'
+                    if (winner === 'X') {
+                        this.gameOver = true;
+                        this.winText = `player X won field ${i} XD`
+                    } else {
+                        this.gameOver = true;
+                        this.winText = `player O won field ${i} XD`
+                    }
+                    console.log(this.winText);
+                    this.boards[i] = Array(9).fill(winner);
+                }
+            }
         }
-
-        if (
-            (this.boards[1][0] === 'O' && this.boards[1][1] === 'O' && this.boards[1][2] === 'O') ||
-            (this.boards[1][0] === 'O' && this.boards[1][3] === 'O' && this.boards[1][6] === 'O') ||
-            (this.boards[1][0] === 'O' && this.boards[1][4] === 'O' && this.boards[1][8] === 'O') ||
-            (this.boards[1][6] === 'O' && this.boards[1][4] === 'O' && this.boards[1][2] === 'O') ||
-            (this.boards[1][2] === 'O' && this.boards[1][5] === 'O' && this.boards[1][8] === 'O') ||
-            (this.boards[1][6] === 'O' && this.boards[1][7] === 'O' && this.boards[1][8] === 'O') ||
-            (this.boards[1][3] === 'O' && this.boards[1][4] === 'O' && this.boards[1][5] === 'O') ||
-            (this.boards[1][1] === 'O' && this.boards[1][4] === 'O' && this.boards[1][7] === 'O')
-        ) {
-            this.boards.forEach((_, square) => {
-                // this.board[square] = '';
-                this.boards[1][square] = "O";
-            })
-            // this.gameOver = true;
-            console.log('o has won veld 2');
-            this.winText = 'O has won veld 2'
-        }
-
     }
 
+
     resetBoard() {
-        this.boards.forEach((_,element) => {
+        this.boards.forEach((_, element) => {
             this.boards[element] = [''];
         });
     };
-
-
 }

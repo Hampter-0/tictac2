@@ -10,16 +10,16 @@ import { Router } from '@angular/router';
 })
 
 export class TicTac2Component {
-  constructor(private router:Router) {
-    
-}
+  constructor(private router: Router) {
+
+  }
 
   board: string[] = Array(9).fill('');
   winText: string = '';
   currentPlayer: 'X' | 'O' = 'X';
   gameOver: boolean = false;
 
-  goToSuperTictac2(){
+  goToSuperTictac2() {
     this.router.navigate(['/supertictac2'])
   }
 
@@ -36,63 +36,31 @@ export class TicTac2Component {
       }
     }
 
-    if(
-      (this.board[0] === 'X' || this.board[0] === 'O') &&
-      (this.board[1] === 'X' || this.board[1] === 'O') &&
-      (this.board[2] === 'X' || this.board[2] === 'O') &&
-      (this.board[3] === 'X' || this.board[3] === 'O') &&
-      (this.board[4] === 'X' || this.board[4] === 'O') &&
-      (this.board[5] === 'X' || this.board[5] === 'O') &&
-      (this.board[6] === 'X' || this.board[6] === 'O') &&
-      (this.board[7] === 'X' || this.board[7] === 'O') &&
-      (this.board[8] === 'X' || this.board[8] === 'O')
-    )
-    {
-        this.winText = 'tie :(';
-    };
+    const possibleWins = [  
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]
+    ]
 
-
-    if (
-      (this.board[0] === 'X' && this.board[1] === 'X' && this.board[2] === 'X') ||
-      (this.board[0] === 'X' && this.board[3] === 'X' && this.board[6] === 'X') ||
-      (this.board[0] === 'X' && this.board[4] === 'X' && this.board[8] === 'X') ||
-      (this.board[6] === 'X' && this.board[4] === 'X' && this.board[2] === 'X') ||
-      (this.board[2] === 'X' && this.board[5] === 'X' && this.board[8] === 'X') ||
-      (this.board[6] === 'X' && this.board[7] === 'X' && this.board[8] === 'X') ||
-      (this.board[3] === 'X' && this.board[4] === 'X' && this.board[5] === 'X') ||
-      (this.board[1] === 'X' && this.board[4] === 'X' && this.board[7] === 'X')
-    ) {
-      console.log('x :)')
-      this.board.forEach((_,square) => {
-        // this.board[square] = '';
-      })
-      this.gameOver = true;
-      this.winText = 'X has won'
+    for (const [a, b, c] of possibleWins) {
+      if (this.board[a] && this.board[a] === this.board[b] && this.board[a] === this.board[c]) {
+        if(this.currentPlayer === 'X'){
+          this.gameOver = true;
+          this.winText = "player O won :)"
+        } else {
+          this.gameOver = true;
+          this.winText = "player X won :)"
+        }
+      }
     }
-    if (
-      (this.board[0] === 'O' && this.board[1] === 'O' && this.board[2] === 'O') ||
-      (this.board[0] === 'O' && this.board[3] === 'O' && this.board[6] === 'O') ||
-      (this.board[0] === 'O' && this.board[4] === 'O' && this.board[8] === 'O') ||
-      (this.board[6] === 'O' && this.board[4] === 'O' && this.board[2] === 'O') ||
-      (this.board[2] === 'O' && this.board[5] === 'O' && this.board[8] === 'O') ||
-      (this.board[6] === 'O' && this.board[7] === 'O' && this.board[8] === 'O') ||
-      (this.board[3] === 'O' && this.board[4] === 'O' && this.board[5] === 'O') ||
-      (this.board[1] === 'O' && this.board[4] === 'O' && this.board[7] === 'O')
-    ) {
-       this.board.forEach((_,square) => {
-        // this.board[square] = '';
-      })
-      this.gameOver = true;
-      console.log('o :)');
-      this.winText = 'O has won'
-    }
+    return null;
   }
 
-  resetBoard(){
+  resetBoard() {
     this.gameOver = false;
-     this.board.forEach((_,square) => {
-        this.board[square] = ''
-        this.winText = '';
-      });
+    this.board.forEach((_, square) => {
+      this.board[square] = ''
+      this.winText = '';
+    });
   }
 }
