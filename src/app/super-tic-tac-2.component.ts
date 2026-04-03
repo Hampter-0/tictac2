@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { disabled } from '@angular/forms/signals';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-super-tic-tac-2',
@@ -9,10 +10,19 @@ import { disabled } from '@angular/forms/signals';
 })
 
 export class SuperTicTac2Component {
+
+constructor(private router:Router) {
+    
+}
+
     winText: string = '';
     boards: string[][] = Array(9).fill(null).map(() => Array(9).fill(''));
     currentPlayer: 'X' | 'O' = 'X';
     gameOver: boolean = false;
+
+    goToTictac2(){
+        this.router.navigate(['/tictac2'])
+    }
 
     handleClick(boardIndex: number, cellIndex: number) {
         if (this.boards[boardIndex][cellIndex]) return;
