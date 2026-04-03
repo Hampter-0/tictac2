@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { TicTac2Component } from './tic-tac-2.component';
+import { TicTac2Component } from './tic-tac-2.component'; 
+import { SuperTicTac2Component } from './super-tic-tac-2.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TicTac2Component],
+  imports: [TicTac2Component, SuperTicTac2Component],
   template: `<app-tic-tac-2></app-tic-tac-2>
+  <app-super-tic-tac-2></app-super-tic-tac-2>
   <p> test hampter XD </p>`,
 })
 
