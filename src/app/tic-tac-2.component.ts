@@ -56,8 +56,8 @@ export class TicTac2Component {
       console.log('x :)')
       this.board.forEach((_,square) => {
         // this.board[square] = '';
-        this.gameOver = true;
       })
+      this.gameOver = true;
       this.winText = 'X has won'
     }
     if (
@@ -72,18 +72,18 @@ export class TicTac2Component {
     ) {
        this.board.forEach((_,square) => {
         // this.board[square] = '';
-        this.gameOver = true;
       })
+      this.gameOver = true;
       console.log('o :)');
       this.winText = 'O has won'
     }
   }
 
   resetBoard(){
+    this.gameOver = false;
      this.board.forEach((_,square) => {
         this.board[square] = ''
         this.winText = '';
-        this.gameOver = false;
       });
   }
 }
