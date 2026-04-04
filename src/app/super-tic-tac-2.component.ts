@@ -19,13 +19,14 @@ export class SuperTicTac2Component {
     currentPlayer: 'X' | 'O' = 'X';
     gameOver: boolean = false;
     currentField: string = '0'
-    wonFields: boolean[] = Array(9).fill(false);
+    wonFields: ('X' | 'O' | null)[] = Array(9).fill(null);
 
     goToTictac2() {
         this.router.navigate(['/tictac2'])
     }
 
     handleClick(boardIndex: number, cellIndex: number) {
+        if(this.gameOver) return;
         if (this.wonFields[boardIndex]) return;
         if (this.boards[boardIndex][cellIndex] !== '') return;
         this.boards[boardIndex][cellIndex] = this.currentPlayer;
@@ -48,28 +49,46 @@ export class SuperTicTac2Component {
             if (this.wonFields[i]) continue;
             for (const [a, b, c] of possibleWins) {
                 if (this.boards[i][a] && this.boards[i][a] === this.boards[i][b] && this.boards[i][a] === this.boards[i][c]) {
-                    let winner = this.boards[i][a];
+                    const winner = this.boards[i][a] as 'X' | 'O';
                     this.currentField = i.toString();
-                    this.wonFields[i] = true;
+                    this.wonFields[i] = winner;
 
                     if (winner === 'X') {
-                        this.gameOver = true;
+                        // this.gameOver = true;
                         this.winText = `player X won field ${i} XD`
                     } else {
-                        this.gameOver = true;
+                        // this.gameOver = true;
                         this.winText = `player O won field ${i} XD`
                     }
+
                     console.log(this.winText);
                     this.boards[i] = Array(9).fill(winner);
                 }
             }
         }
+
+        for (const [a, b, c] of possibleWins) {
+            if (
+                this.wonFields[a] &&
+                this.wonFields[a] === this.wonFields[b] &&
+                this.wonFields[a] === this.wonFields[c]
+            ) {
+                this.gameOver = true;
+                this.winText = `user ${this.wonFields[a]} wins `;
+                console.log(this.winText);
+                return;
+            }
+        }
+
     }
 
 
     resetBoard() {
-        this.boards.forEach((_, element) => {
-            this.boards[element] = [''];
-        });
+        this.boards = Array(9).fill(null).map(() => Array(9).fill(''));
+        this.wonFields = Array(9).fill(null);
+        this.currentPlayer = 'X';
+        this.winText = '';
+        this.gameOver = false;
+        this.currentField = '0';
     };
 }
