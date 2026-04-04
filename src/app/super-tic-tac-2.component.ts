@@ -20,18 +20,19 @@ export class SuperTicTac2Component {
     gameOver: boolean = false;
     currentField: string = '0'
     wonFields: ('X' | 'O' | null)[] = Array(9).fill(null);
+    isFull: boolean = true;
 
     goToTictac2() {
         this.router.navigate(['/tictac2'])
     }
 
     handleClick(boardIndex: number, cellIndex: number) {
-        if(this.gameOver) return;
+        if (this.gameOver) return;
         if (this.wonFields[boardIndex]) return;
         if (this.boards[boardIndex][cellIndex] !== '') return;
-        this.boards[boardIndex][cellIndex] = this.currentPlayer;
-        // console.log(this.boards);
 
+
+        // console.log(this.boards);
         this.boards[boardIndex][cellIndex] = this.currentPlayer;
         if (this.currentPlayer === 'X') {
             this.currentPlayer = 'O';
@@ -80,6 +81,18 @@ export class SuperTicTac2Component {
             }
         }
 
+        this.isFull = true;
+        this.boards[boardIndex].forEach(cell => {
+            if (cell === '') {
+                this.isFull = false;
+            }
+        });
+
+        if (this.isFull && !this.wonFields[boardIndex]) {
+            console.log(`Board ${boardIndex}`);
+            this.wonFields[boardIndex] = null;
+            this.boards[boardIndex] = Array(9).fill('-');
+        }
     }
 
 
