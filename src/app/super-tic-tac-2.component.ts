@@ -18,7 +18,7 @@ export class SuperTicTac2Component {
     boards: string[][] = Array(9).fill(null).map(() => Array(9).fill(''));
     currentPlayer: 'X' | 'O' = 'X';
     gameOver: boolean = false;
-    currentField: string = '0'
+    currentField: string = ''
     wonFields: ('X' | 'O' | "T" | null)[] = Array(9).fill(null);
     isFull: boolean = true;
 
@@ -28,6 +28,9 @@ export class SuperTicTac2Component {
 
 
     handleClick(boardIndex: number, cellIndex: number) {
+        if (this.currentField !== '' && boardIndex !== Number(this.currentField)) {
+            return;
+        }
         if (this.gameOver) return;
         if (this.wonFields[boardIndex]) return;
         if (this.boards[boardIndex][cellIndex] !== '') return;
@@ -35,6 +38,9 @@ export class SuperTicTac2Component {
 
         // console.log(this.boards);
         this.boards[boardIndex][cellIndex] = this.currentPlayer;
+
+        this.currentField = cellIndex.toString();
+
         if (this.currentPlayer === 'X') {
             this.currentPlayer = 'O';
         } else {
@@ -54,7 +60,6 @@ export class SuperTicTac2Component {
             for (const [a, b, c] of possibleWins) {
                 if (this.boards[i][a] && this.boards[i][a] === this.boards[i][b] && this.boards[i][a] === this.boards[i][c]) {
                     const winner = this.boards[i][a] as 'X' | 'O';
-                    this.currentField = i.toString();
                     this.wonFields[i] = winner;
 
                     if (winner === 'X') {
@@ -65,10 +70,11 @@ export class SuperTicTac2Component {
                         this.winText = `player O won field ${i} XD`
                     }
 
-                    console.log(this.winText);
+                    // console.log(this.winText);
                     this.boards[i] = Array(9).fill(winner);
                 }
             }
+            // console.log(this.currentField)
         }
 
         for (const [a, b, c] of possibleWins) {
