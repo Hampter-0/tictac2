@@ -1,19 +1,40 @@
-<div class="main-content">
-  <div class="field">
-    <div (click)="handleClick(0)">{{ board[0] }}</div>
-    <div (click)="handleClick(1)">{{ board[1] }}</div>
-    <div (click)="handleClick(2)">{{ board[2] }}</div>
-    <div (click)="handleClick(3)">{{ board[3] }}</div>
-    <div (click)="handleClick(4)">{{ board[4] }}</div>
-    <div (click)="handleClick(5)">{{ board[5] }}</div>
-    <div (click)="handleClick(6)">{{ board[6] }}</div>
-    <div (click)="handleClick(7)">{{ board[7] }}</div>
-    <div (click)="handleClick(8)">{{ board[8] }}</div>
+<nav class="nav">
+    <button class="btn"> Account </button>
+    <button class="btn"> GameModes </button>
+    <button class="btn"> Leaderboard </button>
+  </nav>
+
+<div class="page-layout">
+  <div class="main-content">
+    <div class="field">
+      <div (click)="handleClick(0)">{{ board[0] }}</div>
+      <div (click)="handleClick(1)">{{ board[1] }}</div>
+      <div (click)="handleClick(2)">{{ board[2] }}</div>
+      <div (click)="handleClick(3)">{{ board[3] }}</div>
+      <div (click)="handleClick(4)">{{ board[4] }}</div>
+      <div (click)="handleClick(5)">{{ board[5] }}</div>
+      <div (click)="handleClick(6)">{{ board[6] }}</div>
+      <div (click)="handleClick(7)">{{ board[7] }}</div>
+      <div (click)="handleClick(8)">{{ board[8] }}</div>
+    </div>
+
+    <p class="win-text">{{ winText }}</p>
+
+    <div class="options-btn">
+      <button class="btn" (click)="resetBoard()"> reset board </button>
+      <button class="btn" (click)="goToSuperTictac2()"> Supertictac2 </button>
+    </div>
   </div>
 
-  <p class="win-text">{{ winText }}</p>
-  <div class="options-btn">
-    <button class="btn" (click)="resetBoard()"> reset board </button><br><br>
-    <button class="btn" (click)="goToSuperTictac2()"> Supertictac2 </button>
+  <div class="chat">
+  <div class="chat-messages">
+    <div class="message">hampternom: XD</div>
+    <div class="message">nom: XD</div>
   </div>
+
+  <div class="chat-input">
+    <input class="input-box" type="text" placeholder="..." />
+    <button class="btn"> ></button>
+  </div>
+</div>
 </div>
