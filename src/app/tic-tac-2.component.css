@@ -2,15 +2,46 @@
   display: grid;
   grid-template-columns: repeat(3, 100px);
   grid-template-rows: repeat(3, 100px);
-  gap: 5px;
+  gap: 0;
 }
 
 .field div {
-  border: 2px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   cursor: pointer;
   user-select: none;
+  box-sizing: border-box;
+}
+
+.field div:not(:nth-child(3n)) {
+  border-right: 4px solid var(--btn-bg);
+}
+
+.field div:nth-child(-n + 6) {
+  border-bottom: 4px solid var(--btn-bg);
+}
+
+.btn{
+  background-color: var(--btn-bg);
+  border: 0px white solid;
+  color: white;
+  padding: 10px ;
+  cursor: pointer;
+}
+
+.options-btn{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.main-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 90vh;
 }
