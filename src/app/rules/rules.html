@@ -1,0 +1,17 @@
+<div class="main-content">
+    <h1>TicTac2</h1>
+    <p><strong>Objective:</strong> Be the first player to get three of your marks (X or O) in a row — horizontally, vertically, or diagonally.</p>
+    <p><strong>Setup:</strong> A 3×3 grid. One player is X, the other is O.</p>
+    <p><strong>Gameplay:</strong> Players take turns placing their mark in an empty square.</p>
+    <p><strong>Winning:</strong> The first player to align three marks in a row wins.</p>
+    <p><strong>Draw:</strong> If all squares are filled and no player has three in a row, the game ends in a draw.</p>
+
+    <h1>SuperTicTac2</h1>
+    <p><strong>Board:</strong> The board is a 3×3 grid of small Tic-Tac-Toe boards, each of which is itself a 3×3 grid.</p>
+    <p><strong>Turns:</strong> Players X and O take turns placing marks in any empty cell of a small board. Where you place your mark determines which small board your opponent must play on next — for example, if you play in the top-right cell of a small board, your opponent must play in the top-right small board. If that board is full or already won, they may choose any board.</p>
+    <p><strong>Winning Small Boards:</strong> Win a small board by getting three in a row, then claim it for the large board.</p>
+    <p><strong>Winning the Game:</strong> The goal is to win three small boards in a row on the large board — horizontally, vertically, or diagonally.</p>
+    <p><strong>Strategy:</strong> Control the next move for your opponent, prioritize the center and corners of the large board, create multiple threats, and block your opponent’s progress while planning ahead for both small and large board wins.</p>
+    <button class="btn" (click)="goToTictac2()"> Back</button>
+</div>
+

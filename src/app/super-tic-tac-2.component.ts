@@ -39,8 +39,6 @@ export class SuperTicTac2Component {
         // console.log(this.boards);
         this.boards[boardIndex][cellIndex] = this.currentPlayer;
 
-        this.currentField = cellIndex.toString();
-
         if (this.currentPlayer === 'X') {
             this.currentPlayer = 'O';
         } else {
@@ -101,6 +99,12 @@ export class SuperTicTac2Component {
             console.log(`Board ${boardIndex}`);
             this.wonFields[boardIndex] = "T";
         }
+
+        if (this.wonFields[cellIndex]) {
+            this.currentField = '';
+        } else {
+            this.currentField = cellIndex.toString();
+        }
     }
 
 
@@ -110,6 +114,6 @@ export class SuperTicTac2Component {
         this.currentPlayer = 'X';
         this.winText = '';
         this.gameOver = false;
-        this.currentField = '0';
+        this.currentField = '';
     };
 }
