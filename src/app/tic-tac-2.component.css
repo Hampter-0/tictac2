@@ -36,6 +36,10 @@
   border-bottom: 4px solid var(--btn-bg);
 }
 
+.win-text{
+  padding-right: 250px ;
+}
+
 .btn{
   background-color: var(--btn-bg);
   border: 0px white solid;
