@@ -20,6 +20,8 @@
     "@capacitor/android": "^8.3.0",
     "@capacitor/angular": "^2.0.3",
     "@capacitor/core": "latest",
+    "dotenv": "^17.4.1",
+    "mysql2": "^3.20.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
