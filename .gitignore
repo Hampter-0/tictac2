@@ -36,3 +36,4 @@ google-services.json
 /node_modules/
 .angular/
 .env
+/backend/node_modules
