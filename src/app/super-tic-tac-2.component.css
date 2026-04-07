@@ -3,6 +3,7 @@
   grid-template-columns: repeat(3, 150px);
   grid-template-rows: repeat(3, 150px);
   gap: 8px;
+  padding-right: 250px;
 }
 
 .square {
@@ -22,4 +23,99 @@
   font-size: 1rem;
   cursor: pointer;
   user-select: none;
+}
+
+.nav{
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--nav-bg);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-right: 250px;
+}
+
+
+.win-text{
+  padding-right: 250px ;
+}
+
+.btn{
+  background-color: var(--btn-bg);
+  border: 0px white solid;
+  color: white;
+  padding: 10px ;
+  cursor: pointer;
+}
+
+.page-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  padding: 20px;
+}
+
+.chat {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: var(--nav-bg);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.message {
+  color: white;
+  font-size: 0.9rem;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+  color: white;
+}
+
+.input-box{
+  background: none;
+  border: var(--btn-bg) solid 2px;
+  color: white;
+}
+
+.options-btn{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  padding-right: 250px;
+}
+
+.main-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 86vh;
+}
+
+.input-box::placeholder{
+  color: white;
 }

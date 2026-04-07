@@ -14,6 +14,7 @@ export class SuperTicTac2Component {
     constructor(private router: Router) {
 
     }
+
     winText: string = '';
     boards: string[][] = Array(9).fill(null).map(() => Array(9).fill(''));
     currentPlayer: 'X' | 'O' = 'X';
@@ -24,6 +25,10 @@ export class SuperTicTac2Component {
 
     goToTictac2() {
         this.router.navigate(['/tictac2'])
+    }
+
+    goToRules() {
+        this.router.navigate(['/rules'])
     }
 
 

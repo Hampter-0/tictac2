@@ -14,7 +14,7 @@ export class Rules {
     }
 
    goToTictac2() {
-    this.router.navigate(['/tictac2'])
+    this.router.navigate(['/'])
   }
 
 }
