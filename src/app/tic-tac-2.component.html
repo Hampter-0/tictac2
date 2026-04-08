@@ -1,8 +1,8 @@
 <nav class="nav">
-    <button class="btn"> Account </button>
+    <button class="btn" > Account </button>
     <button class="btn"> GameModes </button>
     <button class="btn"> Leaderboard </button>
-    <button class="btn" (click)="goToRules()"> Rules </button>
+    <button class="btn" routerLink="/rules"> Rules </button>
   </nav>
 
 <div class="page-layout">
@@ -23,7 +23,7 @@
 
     <div class="options-btn">
       <button class="btn" (click)="resetBoard()"> reset board </button>
-      <button class="btn" (click)="goToSuperTictac2()"> Supertictac2 </button>
+      <button class="btn" routerLink="/supertictac2"> Supertictac2 </button>
     </div>
   </div>
 

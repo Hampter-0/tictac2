@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-tic-tac-2',
   standalone: true,
   templateUrl: './tic-tac-2.component.html',
   styleUrls: ['./tic-tac-2.component.css'],
+  imports: [RouterModule],
 })
 
 export class TicTac2Component {
@@ -17,14 +19,6 @@ export class TicTac2Component {
   winText: string = '';
   currentPlayer: 'X' | 'O' = 'X';
   gameOver: boolean = false;
-
-  goToSuperTictac2() {
-    this.router.navigate(['/supertictac2'])
-  }
-
-  goToRules(){
-    this.router.navigate(['/rules'])
-  }
 
   handleClick(index: number) {
     if (this.gameOver || this.board[index]) return;

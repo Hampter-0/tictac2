@@ -2,7 +2,7 @@
     <button class="btn"> Account </button>
     <button class="btn"> GameModes </button>
     <button class="btn"> Leaderboard </button>
-    <button class="btn" (click)="goToRules()"> Rules </button>
+    <button class="btn" routerLink="/rules"> Rules </button>
 </nav>
 <div class="page-layout">
     <div class="main-content">
@@ -121,7 +121,7 @@
         
         <div class="options-btn">
             <button class="btn" (click)="resetBoard()">reset board</button><br><br>
-            <button class="btn" (click)="goToTictac2()"> tictac2 </button>
+            <button class="btn" routerLink="/tictac2"> tictac2 </button>
         </div>
 
         <div class="chat">

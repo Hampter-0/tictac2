@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-super-tic-tac-2',
     standalone: true,
     templateUrl: './super-tic-tac-2.component.html',
     styleUrls: ['./super-tic-tac-2.component.css'],
+    imports: [RouterModule],
 })
 
 export class SuperTicTac2Component {
@@ -21,14 +23,6 @@ export class SuperTicTac2Component {
     currentField: string = ''
     wonFields: ('X' | 'O' | "T" | null)[] = Array(9).fill(null);
     isFull: boolean = true;
-
-    goToTictac2() {
-        this.router.navigate(['/tictac2'])
-    }
-
-    goToRules() {
-        this.router.navigate(['/rules'])
-    }
 
 
     handleClick(boardIndex: number, cellIndex: number) {
