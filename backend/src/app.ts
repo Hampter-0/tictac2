@@ -1,5 +1,5 @@
 import express from "express";
-import { pool, testConnection } from "./config/db.ts";
+import { pool, testConnection } from "./config/db";
 
 const app = express();
 app.use(express.json());
