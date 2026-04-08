@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { TicTac2Component } from './tic-tac-2.component';
-import { SuperTicTac2Component } from './super-tic-tac-2.component';
+import { SuperTicTac2Component } from './super-tic-tac-2/super-tic-tac-2.component';
 import { Rules } from './rules/rules'
 
 export const routes: Routes = [
