@@ -2,6 +2,8 @@
     --main-bg: #25272E;
     --nav-bg: #2B2D35;
     --btn-bg: #7A3AAA;
+    --input-bg: var(--nav-bg);
+    --input-label-bg: var(--btn-bg);
 }
 
 body{
