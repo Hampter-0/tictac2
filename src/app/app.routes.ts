@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { TicTac2Component } from './tic-tac-2.component';
+import { TicTac2Component } from './tic-tac-2/tic-tac-2.component';
 import { SuperTicTac2Component } from './super-tic-tac-2/super-tic-tac-2.component';
 import { Login } from './login/login'
 import { Register } from './register/register'
