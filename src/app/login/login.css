@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    /* media query 50vh for ipad screens ??? idk its buggy */
 }
 
 .account-form {
