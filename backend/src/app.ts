@@ -23,15 +23,30 @@ app.get("/api/users", async (req, res) => {
 
 app.post("/api/register", async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, confirmPassword } = req.body;
+
+    if (password === '' || email === '' || username === '' || confirmPassword === '') {
+      res.status(401).json({ message: "please fill in all fields" })
+      return
+    }
+
+    if (password !== confirmPassword) {
+      res.status(401).json({ message: "passwords do not match" })
+      return
+    }
+
+    if(!email.includes("@")){
+      res.status(401).json({ message: "not a valid email :(" })
+      return
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    
+
     await pool.query("INSERT INTO users (username, email, password) VALUES (?, ?, ?)", [username, email, hashedPassword]);
     res.status(201).json({ message: "User registered" });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
-    res.status(500).json({ error: err})
+    res.status(500).json({ error: err })
   }
 })
 
@@ -41,7 +56,7 @@ app.post("/api/login", async (req, res) => {
 
     const [rows] = await pool.query<RowDataPacket[]>("SELECT * FROM users WHERE username = ?", [username]);
 
-    if(rows.length === 0){
+    if (rows.length === 0) {
       return res.status(401).json({ message: "Invalid username or password" });
     }
 
@@ -49,15 +64,15 @@ app.post("/api/login", async (req, res) => {
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password)
 
-    if(!isPasswordCorrect){
+    if (!isPasswordCorrect) {
       return res.status(401).json({ message: "Invalid username or password" });
     }
 
-    return res.json({ message: "logged in succesfully"})
+    return res.json({ message: "logged in succesfully" })
 
-  } catch(err) {
+  } catch (err) {
     console.log(err);
-    return res.status(500).json({ error: err})
+    return res.status(500).json({ error: err })
   }
 })
 

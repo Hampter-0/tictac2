@@ -32,7 +32,8 @@ export class Register {
         body: JSON.stringify({
           username: this.username,
           email: this.email,
-          password: this.password
+          password: this.password,
+          confirmPassword: this.confirmPassword
         })
       });
 
@@ -44,7 +45,6 @@ export class Register {
       if (res.status === 200 || res.status === 201) {
         this.router.navigate(['/login']);
       }
-
 
     } catch (err) {
       console.error("fetch error:", err);
