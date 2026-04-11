@@ -21,7 +21,7 @@ export class Login {
 
     console.log("yippee");
     try {
-      const res = await fetch("https://tictac2.hampternom.nl/api/login", { //change with domain later ( first local testing :) 
+      const res = await fetch("https://tictac2.hampternom.nl/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

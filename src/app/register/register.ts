@@ -24,7 +24,7 @@ export class Register {
 
     console.log("yippee");
     try {
-      const res = await fetch("https://tictac2.hampternom.nl/api/register", { //change with domain later ( first local testing :) 
+      const res = await fetch("https://tictac2.hampternom.nl/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

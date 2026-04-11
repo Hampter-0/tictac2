@@ -13,3 +13,23 @@
   font-size: 2rem;
   cursor: pointer;
 }   
+
+.nav{
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--nav-bg);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-right: 250px;
+}
+
+.btn{
+  background-color: var(--btn-bg);
+  border: 0px white solid;
+  color: white;
+  padding: 10px ;
+  cursor: pointer;
+}

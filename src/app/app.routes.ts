@@ -4,6 +4,7 @@ import { SuperTicTac2Component } from './super-tic-tac-2/super-tic-tac-2.compone
 import { Login } from './login/login'
 import { Register } from './register/register'
 import { Rules } from './rules/rules'
+import { Account } from './account/account'
 
 export const routes: Routes = [
   { path: '', redirectTo: '/tictac2', pathMatch: 'full' },
@@ -27,4 +28,8 @@ export const routes: Routes = [
     path: 'register',
     component: Register,
   },
+  {
+    path: 'account',
+    component: Account,
+  }
 ];

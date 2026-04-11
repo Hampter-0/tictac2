@@ -1,0 +1,28 @@
+<nav class="nav">
+    <button class="btn" routerLink="/account"> Account </button>
+    <button class="btn"> GameModes </button>
+    <button class="btn"> Leaderboard </button>
+    <button class="btn" routerLink="/rules"> Rules </button>
+    <button class="btn" routerLink="/tictac2"> Back </button>
+</nav>
+
+<div class="wrapper">
+    <div class="account-info">
+        <div class="label"> Account info: </div>
+        <div class="info-row">username: hampter</div>
+        <div class="info-row">password: .......</div>
+        <div class="info-row">email: hampter@gmail.com</div>
+        <!-- TODO: replace these with actual fetch info  -->
+        <button class="logout-btn"> LOGOUT </button>
+    </div>
+
+    <div class="account-info">
+        <div class="label"> Change Account Information: </div>
+        <input class="info-row" type="text" value="hampter">
+        <input class="info-row" type="password" value="............">
+        <input class="info-row" type="email" value="hampter@gmail.com">
+        <input class="info-row" type="password" placeholder="Current password">
+        <!-- TODO: replace these with actual fetch info  -->
+        <button class="logout-btn"> SAVE </button>
+    </div>
+</div>

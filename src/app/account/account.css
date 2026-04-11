@@ -1,0 +1,45 @@
+.account-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+    align-items: center;
+}
+
+.account-info input {
+    border: none;
+    color: white;
+}
+
+.info-row {
+    background-color: var(--input-bg);
+    padding: 10px;
+    width: 20rem;
+}
+
+.logout-btn{
+    background-color: var(--btn-bg);
+    width: 21.2rem;
+    padding: 10px;
+    text-align: center;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20rem;
+    min-height: 100vh;
+}
+
+@media(max-width: 1200px){
+    .wrapper{
+        flex-direction: column;
+        gap: 10rem;
+    }
+}
